@@ -1,0 +1,201 @@
+.topbar {
+  height: 60px;
+  background: linear-gradient(
+    to right,
+    rgb(6, 0, 16),
+    rgb(82, 39, 255),
+    rgb(6, 0, 16)
+  );
+  border-bottom: 1px solid #5227FF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 4px 24px rgba(82, 39, 255, 0.3);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  font-family: 'Inter', 'Satoshi', sans-serif;
+}
+
+/* Topbar Left - Logo Section */
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.topbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-icon {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.logo-image {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 6px;
+  transition: 0.2s;
+  filter: brightness(0) invert(1);
+}
+
+.topbar-logo:hover .logo-image {
+  filter: brightness(0) invert(1) brightness(1.15);
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px rgba(82, 39, 255, 0.3);
+}
+
+/* Topbar Right - Buttons Section */
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-login-btn,
+.topbar-logout-btn {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', 'Satoshi', sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: #FFFFFF;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition: 0.2s;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.topbar-login-btn:hover,
+.topbar-logout-btn:hover {
+  background: rgba(82, 39, 255, 0.3);
+  border-color: #5227FF;
+  box-shadow: 0 4px 12px rgba(82, 39, 255, 0.3);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 1024px) {
+  .topbar {
+    left: 0 !important;
+    right: 0 !important;
+    padding: 0 15px !important;
+    height: 55px !important;
+    justify-content: space-between !important;
+  }
+
+  .logo-image {
+    width: 55px !important;
+    height: 75px !important;
+  }
+
+  .logo-text {
+    font-size: 20px !important;
+  }
+
+  .topbar-login-btn,
+  .topbar-logout-btn {
+    padding: 7px 16px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    left: 0 !important;
+    right: 0 !important;
+    padding: 0 12px !important;
+    height: 55px !important;
+    justify-content: space-between !important;
+  }
+
+  .logo-image {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .logo-icon {
+    font-size: 20px !important;
+  }
+
+  .logo-text {
+    font-size: 18px !important;
+  }
+
+  .topbar-login-btn,
+  .topbar-logout-btn {
+    padding: 6px 14px !important;
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    height: 50px !important;
+    padding: 0 10px !important;
+    justify-content: space-between !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  .logo-image {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .logo-icon {
+    font-size: 18px !important;
+  }
+
+  .logo-text {
+    font-size: 16px !important;
+  }
+
+  .topbar-login-btn,
+  .topbar-logout-btn {
+    padding: 5px 12px !important;
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .topbar {
+    height: 48px !important;
+    padding: 0 8px !important;
+  }
+
+  .logo-icon {
+    font-size: 16px !important;
+  }
+
+  .logo-text {
+    font-size: 14px !important;
+  }
+
+  .topbar-login-btn,
+  .topbar-logout-btn {
+    padding: 4px 10px !important;
+    font-size: 9px !important;
+  }
+}
