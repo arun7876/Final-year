@@ -93,7 +93,8 @@ function Chatbot() {
     setInput("");
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5001/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text }) });
+      const chatbotUrl = process.env.REACT_APP_CHATBOT_URL || 'http://localhost:5001';
+      const res = await fetch(`${chatbotUrl}/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text }) });
       const data = await res.json();
       setMessages(p => [...p, { id: Date.now() + 1, sender: "bot", text: data.reply }]);
     } catch {
