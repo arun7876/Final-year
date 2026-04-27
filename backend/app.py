@@ -21,6 +21,10 @@ model = joblib.load(model_path)
 le = joblib.load(encoder_path)
 symptom_features = joblib.load(features_path)
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({'status': 'success'})
+
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
