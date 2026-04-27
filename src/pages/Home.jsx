@@ -105,7 +105,7 @@ function Home({ user, onLogout }) {
             <div className="stat-icon"><FaRegHourglass size={30} /></div>
             <div className="stat-content">
               <h4>24/7</h4>
-              <p>Available</p>
+              <p>Available</p>hi
             </div>
           </div>
         </div>
