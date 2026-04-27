@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+const BACKEND_URL = process.env.REACT_APP_API_URL || 'https://hcp-backend.onrender.com';
 const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || 'https://hcp-backend.onrender.com'
+    baseURL: BACKEND_URL
 });
 
 export const getPrediction = async (symptoms) => {
