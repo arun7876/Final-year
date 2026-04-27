@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getPrediction } from "../api/api";
+import axios from "axios";
 import { Brain, AlertCircle, ArrowLeft, ArrowRight, ShieldAlert, Activity, HeartPulse } from "lucide-react";
 
 function PredictionResult() {
@@ -22,8 +22,9 @@ function PredictionResult() {
 
       try {
         setLoading(true);
-        const data = await getPrediction(symptoms);
-        setPrediction(data);
+        const API_URL = import.meta.env.VITE_API_URL || 'https://hcp-backend.onrender.com';
+        const response = await axios.post(`${API_URL}/predict`, { symptoms });
+        setPrediction(response.data);
         setError(null);
         // Trigger fade in
         setTimeout(() => setShowResult(true), 100);

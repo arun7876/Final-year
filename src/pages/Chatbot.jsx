@@ -93,15 +93,7 @@ function Chatbot() {
     setInput("");
     setLoading(true);
     try {
-      const chatbotUrl = process.env.REACT_APP_CHATBOT_URL || 'https://hcp-backend.onrender.com';
-      const res = await fetch(`${chatbotUrl}/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text })
-      });
-      const data = await res.json();
-      setMessages(p => [...p, { id: Date.now() + 1, sender: "bot", text: data.reply }]);
-    } catch {
+      const chatbotUrl = import.meta.env.VITE_CHATBOT_URL || 'https://hcp-backend.onrender.com';
       setMessages(p => [...p, { id: Date.now() + 1, sender: "bot", text: "⚠️ Couldn't reach the server. Please try again later." }]);
     } finally {
       setLoading(false);
