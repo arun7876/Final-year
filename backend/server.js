@@ -15,7 +15,7 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 // Helper: sleep for ms milliseconds
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-app.get("/", (req, res) => res.json({ status: "AI Chat Server running on port 5001 (Google Gemini)" }));
+app.get("/", (req, res) => res.json({ status: `AI Chat Server running on port ${port} (Google Gemini)` }));
 
 app.post("/chat", async (req, res) => {
     const userMessage = req.body.message;
@@ -122,6 +122,8 @@ app.post("/hospitals", async (req, res) => {
 });
 
 
-app.listen(5001, () => {
-    console.log("✅ Server running on port 5001 (Google Gemini)");
+const port = process.env.PORT || 5001;
+
+app.listen(port, '0.0.0.0', () => {
+    console.log(`✅ Server running on port ${port} (Google Gemini)`);
 });
