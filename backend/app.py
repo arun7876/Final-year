@@ -13,13 +13,20 @@ model_path = 'disease_model.pkl'
 encoder_path = 'label_encoder.pkl'
 features_path = 'symptom_features.pkl'
 
-if not os.path.exists(model_path):
-    print("Error: Model not found. Please run train_model.py first.")
-    exit(1)
+model = None
+le = None
+symptom_features = None
 
-model = joblib.load(model_path)
-le = joblib.load(encoder_path)
-symptom_features = joblib.load(features_path)
+try:
+    if os.path.exists(model_path):
+        model = joblib.load(model_path)
+        le = joblib.load(encoder_path)
+        symptom_features = joblib.load(features_path)
+        print("Models loaded successfully")
+    else:
+        print("Warning: Model files not found, but continuing...")
+except Exception as e:
+    print(f"Warning: Error loading models: {e}, but continuing...")
 
 @app.route('/', methods=['GET'])
 def home():
@@ -27,6 +34,12 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    if model is None or le is None or symptom_features is None:
+        return jsonify({
+            'status': 'error',
+            'message': 'Models not loaded'
+        }), 500
+    
     try:
         data = request.json
         user_symptoms = data.get('symptoms', [])
