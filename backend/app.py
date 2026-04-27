@@ -23,7 +23,7 @@ symptom_features = joblib.load(features_path)
 
 @app.route('/', methods=['GET'])
 def home():
-    return jsonify({'status': 'success'})
+    return jsonify({'status': 'success', 'message': 'Flask backend is running'})
 
 @app.route('/predict', methods=['POST'])
 def predict():
